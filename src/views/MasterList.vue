@@ -2,21 +2,22 @@
   <master-base :title="'Stories'">
     <Timeline pending class="timeline" v-show="stories.length > 0">
       <master-item
-       v-for="item in stories"
+       v-for="item in stories.slice((page - 1) * 10, page * 10)"
        :key="item.id"
        :id="item.id"
        :title="item.title"
        :contents="item.contents"
-       :time="item.time"
+       :time="new Date(item.time)"
        closable>
       </master-item>
-      <TimelineItem><a href="#">More</a></TimelineItem>
+      <TimelineItem>More</TimelineItem>
     </Timeline>
     <Page
      :total="stories.length"
      prev-text="< Previous"
      next-text="Next >"
      class="page-selector"
+     @on-change="page => this.page = page"
      v-show="stories.length > 0"/>
     <div class="empty-msg" v-show="stories.length == 0">
       It's empty now, go ahead and write something amazing!
@@ -33,6 +34,11 @@ export default {
   components: {
     'master-base': MasterBase,
     'master-item': MasterItem
+  },
+  data () {
+    return {
+      page: 1
+    }
   },
   computed: {
     stories: {

@@ -5,8 +5,13 @@
 </template>
 
 <script>
+import loadConfig from '@/uitls/loadConfig'
+
 export default {
-  name: 'app'
+  name: 'app',
+  mounted () {
+    loadConfig()
+  }
 }
 </script>
 

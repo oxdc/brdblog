@@ -15,6 +15,16 @@ const getters = {
     } else {
       return ''
     }
+  },
+  path: state => id => {
+    const index = state.stories.findIndex((element) => {
+      return element.id === id
+    })
+    if (index >= 0) {
+      return state.stories[index].path
+    } else {
+      return null
+    }
   }
 }
 

@@ -17,6 +17,26 @@ export default new Router({
       component: MasterContent
     },
     {
+      path: '/about',
+      redirect: {
+        name: 'master-content',
+        params: {
+          id: 'about',
+          title: "About"
+        }
+      }
+    },
+    {
+      path: '/inspiring',
+      redirect: {
+        name: 'master-content',
+        params: {
+          id: 'inspiring',
+          title: "Inspiring"
+        }
+      }
+    },
+    {
       path: '*',
       redirect: '/'
     }

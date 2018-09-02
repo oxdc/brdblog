@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import getContents from '@/uitls/getContents'
 import MasterBase from '@/views/MasterBase'
 
 export default {
@@ -31,7 +32,13 @@ export default {
   },
   methods: {
     onReady (quill) {
-      quill.setContents(JSON.parse(this.$store.getters.contents(this.$route.params.id)))
+      var path = this.$store.getters.path(this.$route.params.id)
+      if (path) {
+        getContents(path).then((data) => {
+          var contents = JSON.parse(data.content)
+          quill.setContents(contents.ops)
+        })
+      }
     }
   }
 }

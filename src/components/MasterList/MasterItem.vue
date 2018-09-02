@@ -5,7 +5,7 @@
     </div>
     <Card :bordered="false" class="timeline-article" @click.native="onClick">
       <p slot="title"> {{ title }} </p>
-      <p class="timeline-contents"> {{ contentsStr.substring(0, 500) + ' ...' }} </p>
+      <p class="timeline-contents"> {{ contents.substring(0, 500) + ' ...' }} </p>
     </Card>
   </TimelineItem>
 </template>
@@ -36,20 +36,10 @@ export default {
       get () {
         return this.time.toLocaleString()
       }
-    },
-    contentsStr: {
-      get () {
-        var ops = JSON.parse(this.contents)
-        var str = ''
-        ops.forEach(element => {
-          str += element.insert
-        })
-        return str
-      }
     }
   },
   methods: {
-    onClick (e) {
+    onClick () {
       this.$router.push({
         name: 'master-content',
         params: {

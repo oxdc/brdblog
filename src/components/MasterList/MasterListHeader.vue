@@ -1,69 +1,69 @@
 <template>
   <div>
     <span class="blog-title"> {{ blogTitle }} </span>
-    <Menu mode="horizontal" theme="dark" active-name="home" class="menu">
-      <MenuItem name="home" to="/" v-show="expanded">
+    <i-menu mode="horizontal" theme="dark" active-name="home" class="menu">
+      <menu-item name="home" to="/" v-show="expanded">
         <Icon type="md-home" />
         Home
-      </MenuItem>
-      <MenuItem name="about" to="/about" v-show="expanded">
+      </menu-item>
+      <menu-item name="about" @click.native="toAbout" v-show="expanded">
         <Icon type="md-information-circle" />
         About
-      </MenuItem>
-      <MenuItem name="inspiring" to="/inspiring" v-show="expanded">
+      </menu-item>
+      <menu-item name="inspiring" @click.native="toInspiring" v-show="expanded">
         <Icon type="md-flame" />
         Inspiring
-      </MenuItem>
-      <MenuItem name="tags" to="/tags" v-show="expanded">
+      </menu-item>
+      <menu-item name="tags" to="/tags" v-show="expanded">
         <Icon type="md-pricetag" />
         Tags
-      </MenuItem>
-      <MenuItem name="archive" to="/archive" v-show="expanded">
+      </menu-item>
+      <menu-item name="archive" to="/archive" v-show="expanded">
         <Icon type="md-archive" />
         Archive
-      </MenuItem>
-      <MenuItem name="rss" to="/rss" v-show="expanded">
+      </menu-item>
+      <menu-item name="rss" to="/rss" v-show="expanded">
         <Icon type="logo-rss" />
         RSS
-      </MenuItem>
-      <MenuItem name="fork" v-show="expanded">
+      </menu-item>
+      <menu-item name="fork" v-show="expanded">
         <Icon type="logo-github" />
         <a style="color: rgba(255,255,255,.7);" href="//github.com/oxdc/brdblog">Fork Me</a>
-      </MenuItem>
+      </menu-item>
       <Submenu name="submenu" v-show="!expanded">
         <template slot="title">
           <Icon type="md-menu" />
         </template>
-        <MenuItem name="home" to="/">
+        <menu-item name="home" to="/">
           <Icon type="md-home" />
           Home
-        </MenuItem>
-        <MenuItem name="about" to="/about">
+        </menu-item>
+        <menu-item name="about" @click.native="toAbout">
           <Icon type="md-information-circle" />
           About
-        </MenuItem>
-        <MenuItem name="inspiring" to="/inspiring">
+        </menu-item>
+        <menu-item name="inspiring" @click.native="toInspiring">
           <Icon type="md-flame" />
           Inspiring
-        </MenuItem>
-        <MenuItem name="tags" to="/tags">
+        </menu-item>
+        <menu-item name="tags" to="/tags">
           <Icon type="md-pricetag" />
           Tags
-        </MenuItem>
-        <MenuItem name="archive" to="/archive">
+        </menu-item>
+        <menu-item name="archive" to="/archive">
           <Icon type="md-archive" />
           Archive
-        </MenuItem>
-        <MenuItem name="rss" to="/rss">
+        </menu-item>
+        <menu-item name="rss" to="/rss">
           <Icon type="logo-rss" />
           RSS
-        </MenuItem>
-        <MenuItem name="fork">
+        </menu-item>
+        <menu-item name="fork">
           <Icon type="logo-github" />
           <a style="color: #515a6e;" href="//github.com/oxdc/brdblog">Fork Me</a>
-        </MenuItem>
+        </menu-item>
       </Submenu>
-    </Menu>
+    </i-menu>
   </div>
 </template>
 
@@ -84,6 +84,26 @@ export default {
       } else {
         this.expanded = false
       }
+    },
+    toAbout () {
+      this.$router.replace('/')
+      this.$router.push({
+        name: 'master-content',
+        params: {
+          id: 'about',
+          title: 'About'
+        }
+      })
+    },
+    toInspiring () {
+      this.$router.replace('/')
+      this.$router.push({
+        name: 'master-content',
+        params: {
+          id: 'inspiring',
+          title: 'Inspiring'
+        }
+      })
     }
   },
   mounted () {

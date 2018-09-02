@@ -1,0 +1,18 @@
+{
+    "stories": [
+        {
+            "id": "about",
+            "title": "About",
+            "contents": "Introduce yourself and your blog here ...",
+            "time": 0,
+            "path": "./stories/about.brdnote"
+        },
+        {
+            "id": "inspiring",
+            "title": "Inspiring",
+            "contents": "Share your ideas here ...",
+            "time": 0,
+            "path": "./stories/inspiring.brdnote"
+        }
+    ]
+}
