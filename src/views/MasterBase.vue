@@ -8,12 +8,12 @@
         <slot slot="content"></slot>
       </document-body>
     </Content>
-    <Footer class="master-footer" id="master-footer">
+    <Footer class="master-footer noselect" id="master-footer">
       {{ copyYear }} &copy; <span> {{ username }} </span> <br/>
       Powered by Project AIAS,
       <a href="https://github.com/oxdc/brdblog">Brdblog</a> and
       <a href="https://github.com/oxdc/brdnote">Brdnote</a>.
-      <Icon type="md-git-branch" /> <a href="https://github.com/oxdc/brdblog">Fork me on <Icon type="logo-github" /> Github</a>
+      <Icon type="md-git-branch" :size="18"/> <a href="https://github.com/oxdc/brdblog">Fork me on <Icon type="logo-github" :size="18"/> Github</a>
     </Footer>
   </Layout>
 </template>
