@@ -22,11 +22,15 @@ import katex from 'katex'
 
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import locale from 'iview/dist/locale/en-US'
 
 window.katex = katex
 window.hljs = hljs
 
-Vue.use(iView);
+Vue.use(iView, {
+  locale
+})
+
 Vue.config.productionTip = false
 
 new Vue({

@@ -34,7 +34,7 @@ export default {
   computed: {
     timeStr: {
       get () {
-        return this.time.toLocaleString()
+        return this.time.toDateString()
       }
     }
   },

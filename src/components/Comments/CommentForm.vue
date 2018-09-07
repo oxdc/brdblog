@@ -1,70 +1,76 @@
 <template>
   <div class="comment-form-container noselect">
-    <div class="comment-form-title">Leave your comment</div>
-    <Form :model="form" :label-width="80">
-      <FormItem label="Name">
-        <i-input
-         v-model="form.name"
-         placeholder="Enter your name ..."
-         style="max-width: 200px;"
-         clearable>
-        </i-input>
-        <label class="comment-tail-label" style="color: #ed4014;"> * (Required) </label>
-      </FormItem>
-      <FormItem label="Passphrase">
-        <i-input
-         v-model="form.passphrase"
-         placeholder="Enter your passphrase ..."
-         type="password"
-         style="max-width: 200px;"
-         clearable>
-        </i-input>
-        <label class="comment-tail-label" style="color: #2d8cf0;"> (Optional) </label>
-      </FormItem>
-      <FormItem label="Email">
-        <i-input
-         v-model="form.email"
-         placeholder="Enter your Email ..."
-         style="max-width: 300px;"
-         clearable>
-        </i-input>
-        <label class="comment-tail-label" style="color: #2d8cf0;"> (Optional) </label>
-      </FormItem>
-      <FormItem label="Personal Site">
-        <i-input
-         v-model="form.website"
-         placeholder="Enter your website ..."
-         style="max-width: 300px;"
-         clearable>
-        </i-input>
-        <label class="comment-tail-label" style="color: #2d8cf0;"> (Optional) </label>
-      </FormItem>
-    </Form>
-    <Divider />
-    <div class="comment-finger-print-container">
-      <div class="comment-finger-print-label">
-        <Icon type="md-finger-print" :size="25"/>
-        Digital finger print:
+    <div v-if="!disabled">
+      <div class="comment-form-title">
+        <Icon type="md-create" />
+        Leave your comment
       </div>
-      <div class="comment-finger-print">
-        {{ fingerPrint[0] }}
+      <Form :model="form" :label-width="80">
+        <FormItem label="Name">
+          <i-input
+           v-model="form.name"
+           placeholder="Enter your name ..."
+           style="max-width: 200px;"
+           clearable>
+          </i-input>
+          <label class="comment-tail-label" style="color: #ed4014;"> * (Required) </label>
+        </FormItem>
+        <FormItem label="Passphrase">
+          <i-input
+           v-model="form.passphrase"
+           placeholder="Enter your passphrase ..."
+           type="password"
+           style="max-width: 200px;"
+           clearable>
+          </i-input>
+          <label class="comment-tail-label" style="color: #2d8cf0;"> (Optional) </label>
+        </FormItem>
+        <FormItem label="Email">
+          <i-input
+           v-model="form.email"
+           placeholder="Enter your Email ..."
+           style="max-width: 300px;"
+           clearable>
+          </i-input>
+          <label class="comment-tail-label" style="color: #2d8cf0;"> (Optional) </label>
+        </FormItem>
+        <FormItem label="Personal Site">
+          <i-input
+           v-model="form.website"
+           placeholder="Enter your website ..."
+           style="max-width: 300px;"
+           clearable>
+          </i-input>
+          <label class="comment-tail-label" style="color: #2d8cf0;"> (Optional) </label>
+        </FormItem>
+      </Form>
+      <Divider />
+      <div class="comment-finger-print-container">
+        <div class="comment-finger-print-label">
+          <Icon type="md-finger-print" :size="25"/>
+          Digital finger print:
+        </div>
+        <div class="comment-finger-print">
+          {{ fingerPrint[0] }}
+        </div>
+        <div class="comment-finger-print">
+          {{ fingerPrint[1] }}
+        </div>
       </div>
-      <div class="comment-finger-print">
-        {{ fingerPrint[1] }}
+      <Divider />
+      <div label-position="right" class="comment-editor">
+        <div class="comment-editor-toolbar-container">
+          <tool-bar id="comment-editor-toolbar"></tool-bar>
+        </div>
+        <quill-editor :options="editorOption">
+        </quill-editor>
+      </div>
+      <div class="comment-submit-container">
+        <Button class="comment-btn">Clear</Button>
+        <Button type="primary" class="comment-btn">Submit</Button>
       </div>
     </div>
-    <Divider />
-    <div label-position="right" class="comment-editor">
-      <div class="comment-editor-toolbar-container">
-        <tool-bar id="comment-editor-toolbar"></tool-bar>
-      </div>
-      <quill-editor :options="editorOption">
-      </quill-editor>
-    </div>
-    <div class="comment-submit-container">
-      <Button class="comment-btn">Clear</Button>
-      <Button type="primary" class="comment-btn">Submit</Button>
-    </div>
+    <div v-if="disabled" class="comment-empty-label">Comments are disabled for this story.</div>
   </div>
 </template>
 
@@ -74,6 +80,12 @@ import Toolbar from '@/components/Comments/Toolbar'
 
 export default {
   name: 'CommentForm',
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: {
     'tool-bar': Toolbar
   },
@@ -180,4 +192,9 @@ export default {
   }
 }
 
+.comment-empty-label {
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+}
 </style>

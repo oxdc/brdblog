@@ -2,64 +2,64 @@ body {
   overflow: hidden !important;
 }
 
-.ql-editor {
+.article .ql-editor {
   padding: 0px !important;
 }
 
-.ql-editor.ql-blank::before {
+.article .ql-editor.ql-blank::before {
   left: 0px !important;
   right: 0px !important;
 }
 
-.ql-editor p,
-.ql-editor ol,
-.ql-editor ul,
-.ql-editor.ql-blank::before,
-.ql-editor h1,
-.ql-editor h2,
-.ql-editor h3,
-.ql-editor h4,
-.ql-editor h5,
-.ql-editor h6 {
+.article .ql-editor p,
+.article .ql-editor ol,
+.article .ql-editor ul,
+.article .ql-editor.ql-blank::before,
+.article .ql-editor h1,
+.article .ql-editor h2,
+.article .ql-editor h3,
+.article .ql-editor h4,
+.article .ql-editor h5,
+.article .ql-editor h6 {
   padding: 0px 60px !important;
 }
 
-.ql-editor h1 {
+.article .ql-editor h1 {
   margin: 1.2em 0em !important;
   font-size: 2em !important;
 }
 
-.ql-editor h2 {
+.article .ql-editor h2 {
   margin: 1.0em 0em !important;
   font-size: 1.7em !important;
 }
 
-.ql-editor h3 {
+.article .ql-editor h3 {
   margin: 0.8em 0em !important;
   font-size: 1.4em !important;
 }
 
-.ql-editor h4 {
+.article .ql-editor h4 {
   margin: 0.6em 0em !important;
   font-size: 1.2em !important;
 }
 
-.ql-editor h5 {
+.article .ql-editor h5 {
   margin: 0.4em 0em !important;
   font-size: 1.1em !important;
 }
 
-.ql-editor h6 {
+.article .ql-editor h6 {
   margin: 0.2em 0em !important;
   font-size: 1em !important;
 }
 
-.ql-editor h1:hover::before,
-.ql-editor h2:hover::before,
-.ql-editor h3:hover::before,
-.ql-editor h4:hover::before,
-.ql-editor h5:hover::before,
-.ql-editor h6:hover::before {
+.article .ql-editor h1:hover::before,
+.article .ql-editor h2:hover::before,
+.article .ql-editor h3:hover::before,
+.article .ql-editor h4:hover::before,
+.article .ql-editor h5:hover::before,
+.article .ql-editor h6:hover::before {
   position: absolute !important;
   content: '\B6' !important;
   left: 30px !important;
@@ -67,155 +67,155 @@ body {
   cursor: pointer !important;
 }
 
-.ql-editor blockquote {
+.article .ql-editor blockquote {
   padding: 0px 60px 0px 56px !important;
 }
 
-.ql-editor li.ql-indent-1:not(.ql-direction-rtl),
-.ql-editor .ql-indent-1:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-1:not(.ql-direction-rtl),
+.article .ql-editor .ql-indent-1:not(.ql-direction-rtl) {
   margin-left: 2em !important;
 }
 
-.ql-editor li.ql-indent-2:not(.ql-direction-rtl),
-.ql-editor .ql-indent-2:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-2:not(.ql-direction-rtl),
+.article .ql-editor .ql-indent-2:not(.ql-direction-rtl) {
   margin-left: 4em !important;
 }
 
-.ql-editor li.ql-indent-3:not(.ql-direction-rtl),
-.ql-editor .ql-indent-3:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-3:not(.ql-direction-rtl),
+.article .ql-editor .ql-indent-3:not(.ql-direction-rtl) {
   margin-left: 6em !important;
 }
 
-.ql-editor li.ql-indent-4:not(.ql-direction-rtl),
-.ql-editor .ql-indent-4:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-4:not(.ql-direction-rtl),
+.article .ql-editor .ql-indent-4:not(.ql-direction-rtl) {
   margin-left: 8em !important;
 }
 
-.ql-editor li.ql-indent-5:not(.ql-direction-rtl),
-.ql-editor .ql-indent-5:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-5:not(.ql-direction-rtl),
+.article .ql-editor .ql-indent-5:not(.ql-direction-rtl) {
   margin-left: 10em !important;
 }
 
-.ql-editor li.ql-indent-6:not(.ql-direction-rtl),
-.ql-editor .ql-indent-6:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-6:not(.ql-direction-rtl),
+.article .ql-editor .ql-indent-6:not(.ql-direction-rtl) {
   margin-left: 12em !important;
 }
 
-.ql-editor li.ql-indent-7:not(.ql-direction-rtl),
-.ql-editor .ql-indent-7:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-7:not(.ql-direction-rtl),
+.article .ql-editor .ql-indent-7:not(.ql-direction-rtl) {
   margin-left: 14em !important;
 }
 
-.ql-editor li.ql-indent-8:not(.ql-direction-rtl),
-.ql-editor .ql-indent-8:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-8:not(.ql-direction-rtl),
+.article .ql-editor .ql-indent-8:not(.ql-direction-rtl) {
   margin-left: 16em !important;
 }
 
-.ql-editor li.ql-indent-1:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-1:not(.ql-direction-rtl) {
   padding-left: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-2:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-2:not(.ql-direction-rtl) {
   padding-left: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-3:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-3:not(.ql-direction-rtl) {
   padding-left: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-4:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-4:not(.ql-direction-rtl) {
   padding-left: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-5:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-5:not(.ql-direction-rtl) {
   padding-left: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-6:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-6:not(.ql-direction-rtl) {
   padding-left: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-7:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-7:not(.ql-direction-rtl) {
   padding-left: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-8:not(.ql-direction-rtl) {
+.article .ql-editor li.ql-indent-8:not(.ql-direction-rtl) {
   padding-left: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-1.ql-direction-rtl.ql-align-right,
-.ql-editor .ql-indent-1.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-1.ql-direction-rtl.ql-align-right,
+.article .ql-editor .ql-indent-1.ql-direction-rtl.ql-align-right {
   margin-right: 2em !important;
 }
 
-.ql-editor li.ql-indent-2.ql-direction-rtl.ql-align-right,
-.ql-editor .ql-indent-2.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-2.ql-direction-rtl.ql-align-right,
+.article .ql-editor .ql-indent-2.ql-direction-rtl.ql-align-right {
   margin-right: 4em !important;
 }
 
-.ql-editor li.ql-indent-3.ql-direction-rtl.ql-align-right,
-.ql-editor .ql-indent-3.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-3.ql-direction-rtl.ql-align-right,
+.article .ql-editor .ql-indent-3.ql-direction-rtl.ql-align-right {
   margin-right: 6em !important;
 }
 
-.ql-editor li.ql-indent-4.ql-direction-rtl.ql-align-right,
-.ql-editor .ql-indent-4.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-4.ql-direction-rtl.ql-align-right,
+.article .ql-editor .ql-indent-4.ql-direction-rtl.ql-align-right {
   margin-right: 8em !important;
 }
 
-.ql-editor li.ql-indent-5.ql-direction-rtl.ql-align-right,
-.ql-editor .ql-indent-5.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-5.ql-direction-rtl.ql-align-right,
+.article .ql-editor .ql-indent-5.ql-direction-rtl.ql-align-right {
   margin-right: 10em !important;
 }
 
-.ql-editor li.ql-indent-6.ql-direction-rtl.ql-align-right,
-.ql-editor .ql-indent-6.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-6.ql-direction-rtl.ql-align-right,
+.article .ql-editor .ql-indent-6.ql-direction-rtl.ql-align-right {
   margin-right: 12em !important;
 }
 
-.ql-editor li.ql-indent-7.ql-direction-rtl.ql-align-right,
-.ql-editor .ql-indent-7.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-7.ql-direction-rtl.ql-align-right,
+.article .ql-editor .ql-indent-7.ql-direction-rtl.ql-align-right {
   margin-right: 14em !important;
 }
 
-.ql-editor li.ql-indent-8.ql-direction-rtl.ql-align-right,
-.ql-editor .ql-indent-8.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-8.ql-direction-rtl.ql-align-right,
+.article .ql-editor .ql-indent-8.ql-direction-rtl.ql-align-right {
   margin-right: 16em !important;
 }
 
-.ql-editor li.ql-indent-1.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-1.ql-direction-rtl.ql-align-right {
   padding-right: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-2.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-2.ql-direction-rtl.ql-align-right {
   padding-right: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-3.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-3.ql-direction-rtl.ql-align-right {
   padding-right: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-4.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-4.ql-direction-rtl.ql-align-right {
   padding-right: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-5.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-5.ql-direction-rtl.ql-align-right {
   padding-right: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-6.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-6.ql-direction-rtl.ql-align-right {
   padding-right: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-7.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-7.ql-direction-rtl.ql-align-right {
   padding-right: 1.5em !important;
 }
 
-.ql-editor li.ql-indent-8.ql-direction-rtl.ql-align-right {
+.article .ql-editor li.ql-indent-8.ql-direction-rtl.ql-align-right {
   padding-right: 1.5em !important;
 }
 
-.ql-editor pre {
+.article .ql-editor pre {
   border-radius: 0px !important;
   padding: 10px 60px 10px 56px !important;
   font-family: monospace !important;

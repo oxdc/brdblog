@@ -1,22 +1,22 @@
 <template>
   <master-base :title="$route.params.title">
-    <quill-editor :disabled="true" :options="editorOption" @ready="onReady">
+    <quill-editor :disabled="true" :options="editorOption" @ready="onReady" class="article">
     </quill-editor>
-    <Divider />
-    <comment-form></comment-form>
+    <Divider style="margin-top: 60px;" />
+    <master-comment></master-comment>
   </master-base>
 </template>
 
 <script>
 import getContents from '@/uitls/getContents'
 import MasterBase from '@/views/MasterBase'
-import CommentForm from '@/components/Comments/CommentForm'
+import MasterComment from '@/views/MasterComment'
 
 export default {
   name: 'MasterContent',
   components: {
     'master-base': MasterBase,
-    'comment-form': CommentForm
+    'master-comment': MasterComment
   },
   computed: {
     editorOption: {
