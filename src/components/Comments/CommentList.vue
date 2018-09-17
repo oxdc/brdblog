@@ -15,7 +15,10 @@
      :like="item.like"
      :dislike="item.dislike"
      :fingerPrint="item.fingerPrint"
-     :childList="item.childList">
+     :email="item.email"
+     :website="item.website"
+     :childList="item.childList"
+     @update-list="onUpdate">
     </comment-item>
     <div v-if="comments.length == 0" class="comment-empty-label">
       No comments here.
@@ -47,14 +50,20 @@ export default {
     }
   },
   mounted () {
-    if (window.socket) {
-      window.socket.emit('list', {
-        id: this.docId
-      })
-      window.socket.on('list-response', (data) => {
-        var comments = JSON.parse(data)
-        this.comments = comments
-      })
+    this.onUpdate()
+  },
+  methods: {
+    onUpdate () {
+      if (window.socket) {
+        window.socket.emit('list', {
+          id: this.docId
+        })
+        window.socket.on('list-response', (data) => {
+          var comments = JSON.parse(data)
+          this.comments = comments
+          console.log(comments)
+       })
+      }
     }
   }
 }

@@ -1,6 +1,13 @@
 <template>
   <div>
-    <div class="comment-item-line">
+    <div class="comment-item-line comment-item-hidden" v-show="hidden" @click="onShow">
+      <div class="comment-item-comment">
+        <Divider>
+          <span class="comment-item-hidden-text">Hidden</span>
+        </Divider>
+      </div>
+    </div>
+    <div class="comment-item-line" v-show="!hidden">
       <Avatar 
        :style="{
           background: avatarBackground,
@@ -41,7 +48,8 @@
          shape="circle"
          icon="md-eye-off"
          size="large"
-         class="comment-item-btn-hidden">
+         class="comment-item-btn-hidden"
+         @click="onHide">
         </Button>
       </Tooltip>
       <Tooltip content="Delete / Block" placement="top">
@@ -54,8 +62,14 @@
         </Button>
       </Tooltip>
     </div>
-    <div class="comment-item-line">
+    <div class="comment-item-line" v-show="!hidden">
       <div class="comment-item-comment">
+        <div class="comment-item-info" v-show="email && website">
+          <Icon type="md-mail" />
+          <span class="comment-item-inline-block" v-show="email">{{ email }}</span>
+          <Icon type="md-link" />
+          <a class="comment-item-inline-block" v-show="website">{{ website }}</a>
+        </div>
         <quill-editor
          :disabled="true"
          :options="editorOption"
@@ -90,11 +104,13 @@
            :key="item.id"
            :id="item.id"
            :name="item.name"
-           :timestamp="item.timestamp"
+           :timestamp="new Date(parseInt(item.timestamp))"
            :comments="item.comments"
            :like="item.like"
            :dislike="item.dislike"
            :fingerPrint="item.fingerPrint"
+           :email="item.email"
+           :website="item.website"
            :childList="item.childList"
            :parentName="name">
           </comment-item>
@@ -141,9 +157,24 @@ export default {
       type: String,
       default: ''
     },
+    email: {
+      type: String,
+      default: ''
+    },
+    website: {
+      type: String,
+      default: ''
+    },
     childList: {
       type: Array,
       default: () => []
+    }
+  },
+  data () {
+    return {
+      hidden: false,
+      __like: 0,
+      __dislike: 0
     }
   },
   name: 'CommentItem',
@@ -212,10 +243,22 @@ export default {
       }
     },
     onLike () {
-      this.$emit('like', { id: this.id })
+      if (window.socket) {
+        window.socket.emit('like', { id: this.id })
+        this.$emit('update-list')
+      }
     },
     onDislike () {
-      this.$emit('dislike', { id: this.id })
+      if (window.socket) {
+        window.socket.emit('dislike', { id: this.id })
+        this.$emit('update-list')
+      }
+    },
+    onHide () {
+      this.hidden = true
+    },
+    onShow () {
+      this.hidden = false
     }
   }
 }
@@ -291,5 +334,24 @@ export default {
   padding: 10px auto;
   text-align: center;
   font-family: monospace;
+}
+
+.comment-item-info {
+  margin: 5px;
+}
+
+.comment-item-info > * {
+  color: gray !important;
+}
+
+.comment-item-hidden {
+  cursor: pointer;
+}
+
+.comment-item-hidden-text {
+  color: gray !important;
+  font-size: 14px !important;
+  font-style: italic !important;
+  font-family: serif !important;
 }
 </style>

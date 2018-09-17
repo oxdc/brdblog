@@ -8,7 +8,7 @@
         <slot slot="content"></slot>
       </document-body>
     </Content>
-    <Footer class="master-footer noselect" id="master-footer">
+    <Footer class="master-footer noselect" id="master-footer" style="padding: 5px;">
       {{ copyYear }} &copy; <span> {{ username }} </span> <br/>
       Powered by Project AIAS,
       <a href="https://github.com/oxdc/brdblog">Brdblog</a> and
