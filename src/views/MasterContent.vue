@@ -3,7 +3,7 @@
     <quill-editor :disabled="true" :options="editorOption" @ready="onReady" class="article">
     </quill-editor>
     <Divider style="margin-top: 60px;" />
-    <master-comment></master-comment>
+    <master-comment :docId="this.$route.params.id"></master-comment>
   </master-base>
 </template>
 

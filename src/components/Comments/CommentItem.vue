@@ -127,7 +127,7 @@ export default {
     },
     comments: {
       type: String,
-      default: '{\"ops\":[{\"insert\":\"\\n\"}]}'
+      default: '{"ops":[{"insert":"\n"}]}'
     },
     like: {
       type: Number,
@@ -207,7 +207,9 @@ export default {
   methods: {
     onReady (quill) {
       var contents = JSON.parse(this.comments)
-      quill.setContents(contents.ops)
+      if (contents) {
+        quill.setContents(contents.ops)
+      }
     },
     onLike () {
       this.$emit('like', { id: this.id })

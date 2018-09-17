@@ -62,12 +62,12 @@
         <div class="comment-editor-toolbar-container">
           <tool-bar id="comment-editor-toolbar"></tool-bar>
         </div>
-        <quill-editor :options="editorOption">
+        <quill-editor :options="editorOption" @ready="onReady">
         </quill-editor>
       </div>
       <div class="comment-submit-container">
         <Button class="comment-btn">Clear</Button>
-        <Button type="primary" class="comment-btn">Submit</Button>
+        <Button type="primary" class="comment-btn" @click="onSubmit">Submit</Button>
       </div>
     </div>
     <div v-if="disabled" class="comment-empty-label">Comments are disabled for this story.</div>
@@ -81,6 +81,10 @@ import Toolbar from '@/components/Comments/Toolbar'
 export default {
   name: 'CommentForm',
   props: {
+    docId: {
+      type: String,
+      required: true
+    },
     disabled: {
       type: Boolean,
       default: false
@@ -96,7 +100,8 @@ export default {
         passphrase: '',
         email: '',
         website: ''
-      }
+      },
+      quill: null
     }
   },
   computed: {
@@ -114,6 +119,16 @@ export default {
         }
       }
     },
+    rawFingerPrint: {
+      get () {
+        if (this.form.passphrase && this.form.name) {
+          var hash = sha256.hmac(this.form.passphrase, this.form.name)
+          return hash
+        } else {
+          return ''
+        }
+      }
+    },
     fingerPrint: {
       get () {
         if (this.form.passphrase && this.form.name) {
@@ -124,6 +139,34 @@ export default {
           return ['not available', '']
         }
       }
+    },
+    delta: {
+      get () {
+        if (this.quill) {
+          return this.quill.getContents()
+        } else {
+          return {'ops':[{'insert':'\n'}]}
+        }
+      }
+    }
+  },
+  methods: {
+    onSubmit () {
+      if (window.socket) {
+        window.socket.emit('new', {
+          id: this.docId,
+          name: this.form.name,
+          timestamp: Date.now().toString(),
+          comments: JSON.stringify(this.delta),
+          fingerprint: this.rawFingerPrint,
+          parent: null,
+          email: this.form.email,
+          website: this.form.website
+        })
+      }
+    },
+    onReady (quill) {
+      this.quill = quill
     }
   }
 }

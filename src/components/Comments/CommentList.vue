@@ -10,7 +10,7 @@
      :key="item.id"
      :id="item.id"
      :name="item.name"
-     :timestamp="item.timestamp"
+     :timestamp="new Date(parseInt(item.timestamp))"
      :comments="item.comments"
      :like="item.like"
      :dislike="item.dislike"
@@ -29,6 +29,10 @@ import CommentItem from '@/components/Comments/CommentItem'
 export default {
   name: 'CommentList',
   props: {
+    docId: {
+      type: String,
+      required: true
+    },
     disabled: {
       type: Boolean,
       default: false
@@ -40,6 +44,17 @@ export default {
   data () {
     return {
       comments: []
+    }
+  },
+  mounted () {
+    if (window.socket) {
+      window.socket.emit('list', {
+        id: this.docId
+      })
+      window.socket.on('list-response', (data) => {
+        var comments = JSON.parse(data)
+        this.comments = comments
+      })
     }
   }
 }
