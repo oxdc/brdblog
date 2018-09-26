@@ -13,15 +13,19 @@ export default function loadConfig() {
         username: data.meta.username
       })
       store.commit('setComments', {
-        enableComments: data.meta.enableComments
+        enableComments: data.comments.enableComments
       })
       store.commit('setCommentsServer', {
-        commentsServer: data.meta.commentsServer
+        commentsServer: data.comments.commentsServer
       })
       store.commit('setCommentsPort', {
-        commentsPort: data.meta.commentsPort
+        commentsPort: data.comments.commentsPort
       })
-      var socket = io.connect(data.meta.commentsServer + ':' + data.meta.commentsPort)
+      var socket = io.connect(
+        (data.comments.tls ? 'https://' : 'http://') +
+        data.comments.commentsServer + ':' +
+        data.comments.commentsPort
+      )
       window.socket = socket
     } catch (error) {
       // error

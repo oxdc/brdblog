@@ -1,8 +1,11 @@
 {
     "meta": {
         "blogTitle": "brdblog",
-        "username": "oxdc",
+        "username": "oxdc"
+    },
+    "comments": {
         "enableComments": true,
+        "tls": true,
         "commentsServer": "localhost",
         "commentsPort": 3000
     }
