@@ -62,11 +62,16 @@
         <div class="comment-editor-toolbar-container">
           <tool-bar id="comment-editor-toolbar"></tool-bar>
         </div>
+        <div v-show="reply">
+          <Tag color="primary" class="comment-btn" closable @on-close="onCancelReply">
+            <Icon type="ios-redo" />
+            <span>Reply to {{ reply }}</span>
+          </Tag>
+        </div>
         <quill-editor :options="editorOption" @ready="onReady">
         </quill-editor>
       </div>
-      <div class="comment-submit-container">
-        <Button class="comment-btn">Clear</Button>
+      <div class="comment-submit-container comment-align-right">
         <Button type="primary" class="comment-btn" @click="onSubmit">Submit</Button>
       </div>
     </div>
@@ -75,6 +80,7 @@
 </template>
 
 <script>
+import { utoa } from '@/uitls/miscellaneous'
 import { sha256 } from 'js-sha256'
 import Toolbar from '@/components/Comments/Toolbar'
 
@@ -88,6 +94,14 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    reply: {
+      type: String,
+      default: ''
+    },
+    replyId: {
+      type: String,
+      default: ''
     }
   },
   components: {
@@ -157,16 +171,22 @@ export default {
           id: this.docId,
           name: this.form.name,
           timestamp: Date.now().toString(),
-          comments: JSON.stringify(this.delta),
+          comments: utoa(JSON.stringify(this.delta)),
           fingerprint: this.rawFingerPrint,
-          parent: null,
+          parent: (this.reply && this.replyId) ? this.replyId : null,
           email: this.form.email,
           website: this.form.website
+        })
+        window.socket.emit('list', {
+          id: this.docId
         })
       }
     },
     onReady (quill) {
       this.quill = quill
+    },
+    onCancelReply () {
+      this.$emit('update:reply', '')
     }
   }
 }
@@ -200,8 +220,6 @@ export default {
 }
 
 .comment-submit-container {
-  display: flex;
-  justify-content: flex-end;
   margin: 20px 10px;
 }
 
@@ -220,6 +238,11 @@ export default {
   padding: 10px auto;
   text-align: center;
   font-family: monospace;
+}
+
+.comment-align-right {
+  display: flex;
+  justify-content: flex-end;
 }
 
 @media (max-width: 800px) {

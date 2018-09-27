@@ -25,7 +25,8 @@
          shape="circle"
          icon="md-text"
          size="large"
-         class="comment-item-btn-primary">
+         class="comment-item-btn-primary"
+         @click="onReply">
         </Button>
       </Tooltip>
       <Tooltip max-width="350" placement="top">
@@ -112,7 +113,9 @@
            :email="item.email"
            :website="item.website"
            :childList="item.childList"
-           :parentName="name">
+           :parentName="name"
+           @update-list="onProUpdate"
+           @reply="onProReply">
           </comment-item>
         </div>
       </div>
@@ -241,6 +244,15 @@ export default {
       if (contents) {
         quill.setContents(contents.ops)
       }
+    },
+    onReply () {
+      this.$emit('reply', this.name, this.id)
+    },
+    onProUpdate () {
+      this.$emit('update-list')
+    },
+    onProReply (name, id) {
+      this.$emit('reply', name, id)
     },
     onLike () {
       if (window.socket) {

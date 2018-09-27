@@ -5,16 +5,18 @@
     </Header>
     <Content class="master-content" id="master-content">
       <document-body :title="title">
-        <slot slot="content"></slot>
+        <div slot="content">
+          <slot></slot>
+          <Footer class="master-footer noselect" id="master-footer">
+            {{ copyYear }} &copy; <span> {{ username }} </span> <br/>
+            Powered by Project AIAS,
+            <a href="https://github.com/oxdc/brdblog">Brdblog</a> and
+            <a href="https://github.com/oxdc/brdnote">Brdnote</a>.
+            <Icon type="md-git-branch" :size="18"/> <a href="https://github.com/oxdc/brdblog">Fork me on <Icon type="logo-github" :size="18"/> Github</a>
+          </Footer>
+        </div>
       </document-body>
     </Content>
-    <Footer class="master-footer noselect" id="master-footer" style="padding: 5px;">
-      {{ copyYear }} &copy; <span> {{ username }} </span> <br/>
-      Powered by Project AIAS,
-      <a href="https://github.com/oxdc/brdblog">Brdblog</a> and
-      <a href="https://github.com/oxdc/brdnote">Brdnote</a>.
-      <Icon type="md-git-branch" :size="18"/> <a href="https://github.com/oxdc/brdblog">Fork me on <Icon type="logo-github" :size="18"/> Github</a>
-    </Footer>
   </Layout>
 </template>
 
@@ -36,11 +38,9 @@ export default {
   methods: {
     initUI () {
       var masterHeader = document.getElementById('master-header')
-      var masterFooter = document.getElementById('master-footer')
       var masterContent = document.getElementById('master-content')
-      if (masterHeader && masterFooter && masterContent) {
+      if (masterHeader && masterContent) {
         masterContent.style.top = masterHeader.clientHeight + 'px'
-        masterContent.style.bottom = masterFooter.clientHeight + 'px'
       }
     }
   },
@@ -76,14 +76,12 @@ export default {
   position: fixed;
   left: 0px;
   right: 0px;
+  bottom: 0px;
   border-bottom: 1px solid #dcdee2;
 }
 
 .master-footer {
+  margin-top: 50px; 
   text-align: center;
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
 }
 </style>

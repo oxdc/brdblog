@@ -18,7 +18,8 @@
      :email="item.email"
      :website="item.website"
      :childList="item.childList"
-     @update-list="onUpdate">
+     @update-list="onUpdate"
+     @reply="onReply">
     </comment-item>
     <div v-if="comments.length == 0" class="comment-empty-label">
       No comments here.
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+import { atou } from '@/uitls/miscellaneous'
 import CommentItem from '@/components/Comments/CommentItem'
 
 export default {
@@ -60,10 +62,25 @@ export default {
         })
         window.socket.on('list-response', (data) => {
           var comments = JSON.parse(data)
-          this.comments = comments
-          console.log(comments)
+          this.comments = []
+          var ref = {}
+          for (var comment of comments) {
+            ref[comment.id.toString()] = comment
+            comment.childList = []
+          }
+          for (var comment of comments) {
+            comment.comments = atou(comment.comments)
+            if (comment.parent && comment.parent != 'None' && ref[comment.parent]) {
+              ref[comment.parent].childList.push(comment)
+            } else {
+              this.comments.push(comment)
+            }
+          }
        })
       }
+    },
+    onReply (name, id) {
+      this.$emit('reply', name, id)
     }
   }
 }

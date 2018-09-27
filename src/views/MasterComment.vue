@@ -1,7 +1,7 @@
 <template>
   <div>
-    <comment-list :docId="docId"></comment-list>
-    <comment-form :docId="docId"></comment-form>
+    <comment-list :docId="docId" @reply="onReply"></comment-list>
+    <comment-form :docId="docId" :reply.sync="reply" :replyId="replyId"></comment-form>
   </div>
 </template>
 
@@ -17,9 +17,21 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      reply: '',
+      replyId: ''
+    }
+  },
   components: {
     'comment-form': CommentForm,
     'comment-list': CommentList
+  },
+  methods: {
+    onReply (name, id) {
+      this.reply = name
+      this.replyId = id
+    }
   }
 }
 </script>
