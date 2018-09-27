@@ -5,8 +5,8 @@
         <Icon type="md-create" />
         Leave your comment
       </div>
-      <Form :model="form" :label-width="80">
-        <FormItem label="Name">
+      <Form :model="form" :label-width="80" :rules="validate" ref="comment-form">
+        <FormItem label="Name" prop="name">
           <i-input
            v-model="form.name"
            placeholder="Enter your name ..."
@@ -115,6 +115,11 @@ export default {
         email: '',
         website: ''
       },
+      validate: {
+        name: [
+          { required: true, message: 'Name cannot be empty.', trigger: 'blur' }
+        ]
+      },
       quill: null
     }
   },
@@ -166,21 +171,31 @@ export default {
   },
   methods: {
     onSubmit () {
-      if (window.socket) {
-        window.socket.emit('new', {
-          id: this.docId,
-          name: this.form.name,
-          timestamp: Date.now().toString(),
-          comments: utoa(JSON.stringify(this.delta)),
-          fingerprint: this.rawFingerPrint,
-          parent: (this.reply && this.replyId) ? this.replyId : null,
-          email: this.form.email,
-          website: this.form.website
-        })
-        window.socket.emit('list', {
-          id: this.docId
-        })
-      }
+      this.$refs['comment-form'].validate((valid) => {
+          if (valid) {
+              if (window.socket) {
+                window.socket.emit('new', {
+                  id: this.docId,
+                  name: this.form.name,
+                  timestamp: Date.now().toString(),
+                  comments: utoa(JSON.stringify(this.delta)),
+                  fingerprint: this.rawFingerPrint,
+                  parent: (this.reply && this.replyId) ? this.replyId : null,
+                  email: this.form.email,
+                  website: this.form.website
+                })
+                window.socket.emit('list', {
+                  id: this.docId
+                })
+                this.$Message.success('Success!')
+              } else {
+                this.$Message.error('No connection!')
+              }
+          } else {
+            this.$Message.error('Name cannot be empty.')
+          }
+      })
+      
     },
     onReady (quill) {
       this.quill = quill

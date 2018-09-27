@@ -21,6 +21,12 @@ export default function loadConfig() {
       store.commit('setCommentsPort', {
         commentsPort: data.comments.commentsPort
       })
+      store.commit('setFrontType', {
+        frontType: data.frontPage.type
+      })
+      store.commit('setFrontStory', {
+        story: data.frontPage.frontStory
+      })
       var socket = io.connect(
         (data.comments.tls ? 'https://' : 'http://') +
         data.comments.commentsServer + ':' +
@@ -36,6 +42,16 @@ export default function loadConfig() {
     try {
       store.commit('setStories', {
         stories: data.stories
+      })
+    } catch (error) {
+      // error
+    }
+  })
+  loadJson('./galleries/index.json', (file) => {
+    var data = JSON.parse(file)
+    try {
+      store.commit('setFrontImgs', {
+        imgs: data.images
       })
     } catch (error) {
       // error

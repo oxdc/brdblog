@@ -15,6 +15,13 @@ import 'quill/dist/quill.bubble.css'
 
 Vue.use(VueQuillEditor)
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// require styles
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper)
+
 import hljs from 'highlight.js'
 import 'highlight.js/styles/vs.css'
 import 'katex/dist/katex.min.css'

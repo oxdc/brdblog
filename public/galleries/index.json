@@ -1,0 +1,12 @@
+{
+    "images": [
+        {
+            "id": "$system/default/example1",
+            "path": "./galleries/example1.jpg"
+        },
+        {
+            "id": "$system/default/example2",
+            "path": "./galleries/example2.jpg"
+        }
+    ]
+}

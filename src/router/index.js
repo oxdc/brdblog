@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import MasterContent from '@/views/MasterContent'
 import MasterList from '@/views/MasterList'
+import MasterFrontPage from '@/views/MasterFrontPage'
 Vue.use(Router)
 
 export default new Router({
@@ -10,6 +11,11 @@ export default new Router({
       path: '/',
       name: 'master-list',
       component: MasterList
+    },
+    {
+      path: '/home',
+      name: 'master-front-page',
+      component: MasterFrontPage
     },
     {
       path: '/story',

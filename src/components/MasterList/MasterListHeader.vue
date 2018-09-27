@@ -1,6 +1,7 @@
 <template>
   <div class="noselect">
-    <span class="blog-title"> {{ blogTitle }} </span>
+    <img :src="'./static/favicon.ico'" class="blog-favicon">
+    <span class="blog-title" @click="toHome"> {{ blogTitle }} </span>
     <i-menu mode="horizontal" theme="dark" active-name="home" class="menu">
       <menu-item name="home" to="/" v-show="expanded">
         <Icon type="md-home" :size="20"/>
@@ -85,6 +86,9 @@ export default {
         this.expanded = false
       }
     },
+    toHome () {
+      this.$router.replace('/home')
+    },
     toAbout () {
       this.$router.replace('/')
       this.$router.push({
@@ -123,10 +127,17 @@ export default {
 </script>
 
 <style scoped>
+.blog-favicon {
+  width: 2em;
+  vertical-align: text-bottom;
+  margin: 0px 10px;
+}
+
 .blog-title {
   color: #f8f8f9;
   font-size: 2em;
   text-transform: capitalize;
+  cursor: pointer;
 }
 
 .menu {
