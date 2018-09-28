@@ -11,6 +11,6 @@
     },
     "frontPage": {
         "type": "gallery",
-        "frontStory": "./stories/front.brdnote"
+        "frontStory": "./stories/meta/front.brdnote"
     }
 }

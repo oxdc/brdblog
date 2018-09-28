@@ -18,6 +18,10 @@
             'background-image': 'url(' + item.path + ')'
            }"
            @click="toStoryList">
+           <div class="front-page-gallery-title">
+              <quill-editor :disabled="true" :options="editorOption" @ready="onTitleReady($event, item.id)" class="article">
+              </quill-editor>
+           </div>
           </div>
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
@@ -88,6 +92,15 @@ export default {
         })
       }
     },
+    onTitleReady (quill, id) {
+      var path = this.$store.getters.frontTitle(id)
+      if (path) {
+        getContents(path).then((data) => {
+          var contents = JSON.parse(data.content)
+          quill.setContents(contents.ops)
+        })
+      }
+    },
     toStoryList () {
       this.$router.replace('/')
     }
@@ -112,6 +125,16 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.front-page-gallery-title {
+  position: relative;
+  left: 10%;
+  top: 15%;
+  width: 80%;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 </style>
 

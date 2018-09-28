@@ -2,11 +2,13 @@
     "images": [
         {
             "id": "$system/default/example1",
-            "path": "./galleries/example1.jpg"
+            "path": "./galleries/example1.jpg",
+            "title": "./stories/meta/galleries/example1.brdnote"
         },
         {
             "id": "$system/default/example2",
-            "path": "./galleries/example2.jpg"
+            "path": "./galleries/example2.jpg",
+            "title": "./stories/meta/galleries/example2.brdnote"
         }
     ]
 }

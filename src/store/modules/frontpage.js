@@ -13,6 +13,16 @@ const getters = {
   },
   frontStory: state => {
     return state.frontStory
+  },
+  frontTitle: state => id => {
+    const index = state.frontImgs.findIndex((element) => {
+      return element.id === id
+    })
+    if (index >= 0) {
+      return state.frontImgs[index].title
+    } else {
+      return null
+    }
   }
 }
 
