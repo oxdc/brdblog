@@ -70,7 +70,6 @@ export default {
   top: 0px;
   left: 0px;
   right: 0px;
-  overflow: hidden;
 }
 
 .master-content {
