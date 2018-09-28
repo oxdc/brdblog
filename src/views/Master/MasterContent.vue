@@ -4,7 +4,7 @@
     </quill-editor>
     <Divider style="margin-top: 60px;" />
     <master-comment :docId="id"></master-comment>
-    <Spin size="large" fix v-if="loading"></Spin>
+    <loader :loading="loading"></loader>
   </master-base>
 </template>
 
@@ -12,12 +12,14 @@
 import getContents from '@/uitls/getContents'
 import MasterBase from '@/views/Base/MasterBase'
 import MasterComment from '@/views/Master/MasterComment'
+import Loader from '@/components/Comments/Loader'
 
 export default {
   name: 'MasterContent',
   components: {
     'master-base': MasterBase,
-    'master-comment': MasterComment
+    'master-comment': MasterComment,
+    'loader': Loader
   },
   data () {
     return {
@@ -81,7 +83,7 @@ export default {
       var triedTimes = 0
       var loadingContent = setInterval(() => {
         var path = this.$store.getters.path(this.id)
-        if (triedTimes >= 100) {
+        if (triedTimes >= 500) {
           clearInterval(loadingContent)
           this.$router.push('/404')
         }
