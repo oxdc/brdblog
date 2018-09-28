@@ -43,7 +43,7 @@ export default {
   computed: {
     stories: {
       get () {
-        return this.$store.getters.stories
+        return this.$store.getters.stories.filter(story => !story.hidden)
       }
     }
   }

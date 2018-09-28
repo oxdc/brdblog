@@ -107,11 +107,46 @@ export function invertColor(hexTripletColor) {
 
 // ucs-2 string to base64 encoded ascii
 export function utoa(str) {
-  return window.btoa(unescape(encodeURIComponent(str)));
+  return window.btoa(unescape(encodeURIComponent(str)))
 }
+
 // base64 encoded ascii to ucs-2 string
 export function atou(str) {
-  return decodeURIComponent(escape(window.atob(str)));
+  return decodeURIComponent(escape(window.atob(str)))
+}
+
+export function extractHostname(url) {
+  var hostname
+
+  if (url.indexOf('//') > -1) {
+    hostname = url.split('/')[2]
+  } else {
+    hostname = url.split('/')[0]
+  }
+
+  //find & remove port number
+  hostname = hostname.split(':')[0]
+  //find & remove "?"
+  hostname = hostname.split('?')[0]
+
+  return hostname;
+}
+
+export function extractRootDomain(url) {
+  var domain = extractHostname(url)
+  var splitArr = domain.split('.')
+  var arrLen = splitArr.length
+
+  if (arrLen > 2) {
+    domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1]
+    //check to see if it's using a Country Code Top Level Domain (ccTLD) (i.e. ".me.uk")
+    if (splitArr[arrLen - 2].length == 2 && splitArr[arrLen - 1].length == 2) {
+      //this is using a ccTLD
+      domain = splitArr[arrLen - 3] + '.' + domain
+    }
+  }
+
+  return domain
 }
 
 export default {
@@ -122,5 +157,7 @@ export default {
   loadBrdnote,
   invertColor,
   utoa,
-  atou
+  atou,
+  extractHostname,
+  extractRootDomain
 }

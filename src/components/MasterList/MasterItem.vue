@@ -40,13 +40,7 @@ export default {
   },
   methods: {
     onClick () {
-      this.$router.push({
-        name: 'master-content',
-        params: {
-          id: this.id,
-          title: this.title
-        }
-      })
+      this.$router.push('/story?id=' + this.id + '&title=' + this.title)
     }
   }
 }

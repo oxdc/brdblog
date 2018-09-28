@@ -12,6 +12,18 @@ export default function loadConfig() {
       store.commit('setUsername', {
         username: data.meta.username
       })
+      store.commit('setDescription', {
+        description: data.meta.description
+      })
+      store.commit('setCategories', {
+        categories: data.meta.categories
+      })
+      store.commit('setPubDate', {
+        pubDate: data.meta.pubDate
+      })
+      store.commit('setLang', {
+        lang: data.meta.lang
+      })
       store.commit('setComments', {
         enableComments: data.comments.enableComments
       })

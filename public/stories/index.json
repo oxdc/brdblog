@@ -5,14 +5,16 @@
             "title": "About",
             "contents": "Introduce yourself and your blog here ...",
             "time": 0,
-            "path": "./stories/about.brdnote"
+            "path": "./stories/about.brdnote",
+            "hidden": false
         },
         {
             "id": "$system/inspiring",
             "title": "Inspiring",
             "contents": "Share your ideas here ...",
             "time": 0,
-            "path": "./stories/inspiring.brdnote"
+            "path": "./stories/inspiring.brdnote",
+            "hidden": false
         }
     ]
 }

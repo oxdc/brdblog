@@ -1,7 +1,13 @@
 {
     "meta": {
         "blogTitle": "brdblog",
-        "username": "oxdc"
+        "username": "oxdc",
+        "description": "An awesome blog based on Brdnote.",
+        "categories": [
+            "blog"
+        ],
+        "pubDate": 0,
+        "lang": "en"
     },
     "comments": {
         "enableComments": true,

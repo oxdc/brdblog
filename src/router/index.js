@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import MasterContent from '@/views/Master/MasterContent'
 import MasterList from '@/views/Master/MasterList'
 import MasterFrontPage from '@/views/Master/MasterFrontPage'
+import MasterRSS from '@/views/Master/MasterRSS'
 import Error404 from '@/views/ErrorPages/Error404'
 Vue.use(Router)
 
@@ -42,6 +43,11 @@ export default new Router({
           title: "Inspiring"
         }
       }
+    },
+    {
+      path: '/rss',
+      name: 'master-rss',
+      component: MasterRSS
     },
     {
       path: '/404',
