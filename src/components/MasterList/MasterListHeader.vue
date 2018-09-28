@@ -90,24 +90,10 @@ export default {
       this.$router.replace('/home')
     },
     toAbout () {
-      this.$router.replace('/')
-      this.$router.push({
-        name: 'master-content',
-        params: {
-          id: 'about',
-          title: 'About'
-        }
-      })
+      this.$router.push('/story?id=%24system%2Fabout&title=About')
     },
     toInspiring () {
-      this.$router.replace('/')
-      this.$router.push({
-        name: 'master-content',
-        params: {
-          id: 'inspiring',
-          title: 'Inspiring'
-        }
-      })
+      this.$router.push('/story?id=%24system%2Finspiring&title=Inspiring')
     }
   },
   mounted () {
@@ -143,5 +129,11 @@ export default {
 .menu {
   float: right;
   width: auto;
+}
+</style>
+
+<style>
+.ivu-layout-header {
+  padding: 0 5% !important;
 }
 </style>

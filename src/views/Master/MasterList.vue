@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import MasterBase from '@/views/MasterBase'
+import MasterBase from '@/views/Base/MasterBase'
 import MasterItem from '@/components/MasterList/MasterItem'
 
 export default {

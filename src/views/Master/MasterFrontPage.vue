@@ -30,7 +30,7 @@
 
 <script>
 import getContents from '@/uitls/getContents'
-import MasterBase from '@/views/MasterBase'
+import MasterBase from '@/views/Base/MasterBase'
 
 export default {
   name: 'MasterFrontPage',

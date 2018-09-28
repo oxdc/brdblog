@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MasterContent from '@/views/MasterContent'
-import MasterList from '@/views/MasterList'
-import MasterFrontPage from '@/views/MasterFrontPage'
+import MasterContent from '@/views/Master/MasterContent'
+import MasterList from '@/views/Master/MasterList'
+import MasterFrontPage from '@/views/Master/MasterFrontPage'
+import Error404 from '@/views/ErrorPages/Error404'
 Vue.use(Router)
 
 export default new Router({
@@ -43,8 +44,12 @@ export default new Router({
       }
     },
     {
+      path: '/404',
+      component: Error404
+    },
+    {
       path: '*',
-      redirect: '/'
+      redirect: '/404'
     }
   ]
 })
