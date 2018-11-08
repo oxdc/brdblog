@@ -6,7 +6,10 @@
             "contents": "Introduce yourself and your blog here ...",
             "time": 0,
             "path": "./stories/about.brdnote",
-            "hidden": false
+            "hidden": false,
+            "tags": [
+                "$system"
+            ]
         },
         {
             "id": "$system/inspiring",
@@ -14,7 +17,10 @@
             "contents": "Share your ideas here ...",
             "time": 0,
             "path": "./stories/inspiring.brdnote",
-            "hidden": false
+            "hidden": false,
+            "tags": [
+                "$system"
+            ]
         }
     ]
 }

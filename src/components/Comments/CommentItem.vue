@@ -175,9 +175,7 @@ export default {
   },
   data () {
     return {
-      hidden: false,
-      __like: 0,
-      __dislike: 0
+      hidden: false
     }
   },
   name: 'CommentItem',

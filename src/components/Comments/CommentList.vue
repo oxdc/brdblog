@@ -64,11 +64,12 @@ export default {
           var comments = JSON.parse(data)
           this.comments = []
           var ref = {}
-          for (var comment of comments) {
+          var comment
+          for (comment of comments) {
             ref[comment.id.toString()] = comment
             comment.childList = []
           }
-          for (var comment of comments) {
+          for (comment of comments) {
             comment.comments = atou(comment.comments)
             if (comment.parent && comment.parent != 'None' && ref[comment.parent]) {
               ref[comment.parent].childList.push(comment)

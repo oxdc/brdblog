@@ -1,1 +1,5 @@
-{"title":"About","tags":[],"content":"{\"ops\":[{\"insert\":\"Introduce yourself and your blog here ...\\n\"}]}"}
+{
+  "title": "About",
+  "tags": ["$system"],
+  "content": "{\"ops\":[{\"insert\":\"Introduce yourself and your blog here ...\\n\"}]}"
+}

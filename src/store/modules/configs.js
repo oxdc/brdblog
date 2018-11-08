@@ -9,7 +9,8 @@ const state = {
   lang: 'en',
   enableComments: true,
   commentsServer: 'localhost',
-  commentsPort: 3000
+  commentsPort: 3000,
+  serverStatus: 'offline'
 }
 
 const getters = {
@@ -45,6 +46,9 @@ const getters = {
   },
   commentsURL: state => {
     return '//' + state.commentsServer + ':' + state.commentsPort
+  },
+  serverStatus: state => {
+    return state.serverStatus
   }
 }
 
@@ -77,6 +81,9 @@ const mutations = {
   },
   setCommentsPort: (state, { commentsPort }) => {
     state.commentsPort = commentsPort
+  },
+  setServerStatus: (state, { serverStatus }) => {
+    state.serverStatus = serverStatus
   }
 }
 

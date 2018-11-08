@@ -2,7 +2,6 @@
   <div class="document-container" ref="document-body" id="document-body">
     <div class="document-body">
       <document-title :title="title"></document-title>
-      <!-- <tag-bar-plane></tag-bar-plane> -->
       <div class="content-container">
         <slot name="content"></slot>
       </div>
@@ -12,7 +11,6 @@
 
 <script>
 import DocumentTitle from '@/components/Document/DocumentTitle'
-// import TagBarPlane from '@/components/TagBar/TagBarPlane'
 
 export default {
   name: 'DocumentBody',
@@ -23,7 +21,6 @@ export default {
   },
   components: {
     'document-title': DocumentTitle
-    // 'tag-bar-plane': TagBarPlane
   }
 }
 </script>

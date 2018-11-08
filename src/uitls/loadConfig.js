@@ -44,6 +44,26 @@ export default function loadConfig() {
         data.comments.commentsServer + ':' +
         data.comments.commentsPort
       )
+      socket.on('connect', () => {
+        store.commit('setServerStatus', {
+          serverStatus: 'online'
+        })
+      })
+      socket.on('disconnect', () => {
+        store.commit('setServerStatus', {
+          serverStatus: 'offline'
+        })
+      })
+      socket.on('error', () => {
+        store.commit('setServerStatus', {
+          serverStatus: 'offline'
+        })
+      })
+      socket.on('connect_timeout', () => {
+        store.commit('setServerStatus', {
+          serverStatus: 'offline'
+        })
+      })
       window.socket = socket
     } catch (error) {
       // error

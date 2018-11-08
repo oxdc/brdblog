@@ -1,5 +1,6 @@
 <template>
   <master-base :title="title">
+    <tag-bar-plane :tags="tags"></tag-bar-plane>
     <quill-editor :disabled="true" :options="editorOption" @ready="onReady" class="article">
     </quill-editor>
     <Divider style="margin-top: 60px;" />
@@ -10,6 +11,7 @@
 
 <script>
 import getContents from '@/uitls/getContents'
+import TagBarPlane from '@/components/TagBar/TagBarPlane'
 import MasterBase from '@/views/Base/MasterBase'
 import MasterComment from '@/views/Master/MasterComment'
 import Loader from '@/components/Comments/Loader'
@@ -19,12 +21,14 @@ export default {
   components: {
     'master-base': MasterBase,
     'master-comment': MasterComment,
-    'loader': Loader
+    'loader': Loader,
+    'tag-bar-plane': TagBarPlane
   },
   data () {
     return {
       quill: null,
-      loading: true
+      loading: true,
+      tags: []
     }
   },
   computed: {
@@ -97,6 +101,7 @@ export default {
             } else {
               this.$router.push('/404')
             }
+            if (data.tags) this.tags = data.tags
           })
         } else {
           triedTimes++

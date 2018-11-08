@@ -1,5 +1,5 @@
 {
   "title": "Inspiring",
-  "tags": [],
+  "tags": ["$system"],
   "content": "{\"ops\":[{\"insert\":\"Share your ideas here ...\\n\"}]}"
 }
