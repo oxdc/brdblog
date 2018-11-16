@@ -1,6 +1,6 @@
 <template>
   <master-base :title="'Stories'">
-    <Timeline pending class="timeline" v-show="stories.length > 0">
+    <Timeline class="timeline" v-show="stories.length > 0">
       <master-item
        v-for="item in stories.slice((page - 1) * 10, page * 10)"
        :key="item.id"
@@ -10,7 +10,6 @@
        :time="new Date(item.time)"
        closable>
       </master-item>
-      <TimelineItem>More</TimelineItem>
     </Timeline>
     <Page
      :total="stories.length"

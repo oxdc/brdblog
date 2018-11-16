@@ -127,8 +127,10 @@ export default {
 }
 
 .menu {
-  float: right;
+  position: fixed;
   width: auto;
+  right: 5%;
+  top: 0px;
 }
 </style>
 

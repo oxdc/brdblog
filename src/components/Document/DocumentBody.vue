@@ -28,7 +28,7 @@ export default {
 <style scoped>
 .document-container {
   overflow-x: hidden;
-  padding: 100px 5px 200px;
+  padding: 5% 5px 100px;
   height: 100%;
 }
 
