@@ -1,9 +1,9 @@
 <template>
-<Spin fix v-if="loading">
-  <div class="loader-container">
-    <div class="loader">Loading...</div>
-  </div>
-</Spin>
+  <Spin fix v-if="loading">
+    <div class="loader-container">
+      <div class="loader">Loading...</div>
+    </div>
+  </Spin>
 </template>
 
 <script>

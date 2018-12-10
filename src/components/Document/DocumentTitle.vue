@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 .title-container {
-  margin: 40px 50px 20px 50px;
+  margin: 40px 5% 20px 5%;
 }
 
 .title {
